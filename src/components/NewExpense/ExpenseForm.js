@@ -4,14 +4,8 @@ import {parseISO} from "date-fns";
 
 function ExpenseForm(
   {
-    // inputTitle,
-    // inputAmount,
-    // inputDate,
-    // handleInputTitle,
-    // handleInputAmount,
-    // handleInputDate,
-    // handleAddExpense
-    onSaveExpenseData
+    onSaveExpenseData,
+    expenses
   }) {
 
   const [inputTitle, setInputTitle] = useState('');
@@ -24,7 +18,8 @@ function ExpenseForm(
     const expenseData = {
       title: inputTitle,
       amount: inputAmount,
-      date: parseISO(inputDate)
+      date: parseISO(inputDate),
+      id: expenses.length - 1
       }
 
     onSaveExpenseData(expenseData);
@@ -32,6 +27,7 @@ function ExpenseForm(
     setInputAmount('');
     setInputDate('');
   }
+
 
   function handleInputTitle(e) {
     setInputTitle(e.target.value);
