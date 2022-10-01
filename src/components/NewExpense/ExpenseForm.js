@@ -1,18 +1,51 @@
 import s from './ExpenseForm.module.css';
+import {useState} from "react";
+import {parseISO} from "date-fns";
 
 function ExpenseForm(
   {
-    inputTitle,
-    inputAmount,
-    inputDate,
-    handleInputTitle,
-    handleInputAmount,
-    handleInputDate,
-    handleAddExpense
+    // inputTitle,
+    // inputAmount,
+    // inputDate,
+    // handleInputTitle,
+    // handleInputAmount,
+    // handleInputDate,
+    // handleAddExpense
+    onSaveExpenseData
   }) {
 
+  const [inputTitle, setInputTitle] = useState('');
+  const [inputAmount, setInputAmount] = useState('');
+  const [inputDate, setInputDate] = useState('');
+
+  function handleAddExpense(e) {
+    e.preventDefault();
+
+    const expenseData = {
+      title: inputTitle,
+      amount: inputAmount,
+      date: parseISO(inputDate)
+      }
+
+    onSaveExpenseData(expenseData);
+    setInputTitle('');
+    setInputAmount('');
+    setInputDate('');
+  }
+
+  function handleInputTitle(e) {
+    setInputTitle(e.target.value);
+  }
+  function handleInputAmount(e) {
+    setInputAmount(e.target.value);
+  }
+  function handleInputDate(e) {
+    setInputDate(e.target.value);
+  }
+
+
   return (
-    <form>
+    <form onSubmit={handleAddExpense}>
       <div className={s.newExpense__controls}>
         <div className={s.newExpense__control}>
           <label>Title</label>
@@ -28,7 +61,7 @@ function ExpenseForm(
         </div>
       </div>
       <div className={s.newExpense__actions}>
-        <button type='button' onClick={handleAddExpense}>Add expense</button>
+        <button type='submit'>Add expense</button>
       </div>
     </form>
   )

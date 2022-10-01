@@ -23,7 +23,7 @@ function ExpenseItem({title, amount, date}) {
         <h2>{itemTitle}</h2>
         <div className={s.expenseItem__price}>${amount}</div>
       </div>
-      <button onClick={handleClick}>Change title</button>
+      {/*<button onClick={handleClick}>Change title</button>*/}
     </Card>
   )
 }
