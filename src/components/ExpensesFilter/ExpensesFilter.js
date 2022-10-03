@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ExpensesFilter.module.css';
 
-const ExpensesFilter = ({selectedYear, onFilterExpenses}) => {
+const ExpensesFilter = ({expenses, selectedYear, onFilterExpenses}) => {
 
   function handleFilteredExpenses(e) {
     onFilterExpenses(e.target.value)

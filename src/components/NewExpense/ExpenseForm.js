@@ -2,11 +2,7 @@ import s from './ExpenseForm.module.css';
 import {useState} from "react";
 import {parseISO} from "date-fns";
 
-function ExpenseForm(
-  {
-    onSaveExpenseData,
-    expenses
-  }) {
+function ExpenseForm({onSaveExpenseData}) {
 
   const [inputTitle, setInputTitle] = useState('');
   const [inputAmount, setInputAmount] = useState('');
@@ -19,7 +15,6 @@ function ExpenseForm(
       title: inputTitle,
       amount: inputAmount,
       date: parseISO(inputDate),
-      id: expenses.length - 1
       }
 
     onSaveExpenseData(expenseData);

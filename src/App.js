@@ -1,7 +1,7 @@
 import Expenses from "./components/Expenses/Expenses";
 import {useState} from "react";
 import s from "./components/NewExpense/NewExpense.module.css";
-import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
 
@@ -9,16 +9,16 @@ function App() {
 
   function handleAddExpense(expense) {
     setExpenses((prev) => [
-      ...prev,
-      expense
+      expense,
+      ...prev
     ]);
   }
 
   return (
     <div>
       <div className={s.newExpense}>
-        <ExpenseForm
-          onSaveExpenseData={handleAddExpense}
+        <NewExpense
+          onAddExpense={handleAddExpense}
           expenses={expenses}
         />
       </div>
