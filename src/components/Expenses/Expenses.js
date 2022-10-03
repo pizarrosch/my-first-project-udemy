@@ -17,11 +17,23 @@ function Expenses({expenses}) {
     return stringItem === filteredYear;
   })
 
+  let expensesContent = <p className={st.noExpenses}>No expenses found.</p>
+
+  if (filteredExpenses.length > 0) {
+     expensesContent = filteredExpenses.map((item) => (
+       <ExpenseItem
+         title={item.title}
+         amount={item.amount}
+         date={item.date}
+         key={item.id}
+       />))
+  }
+
   return (
     <div>
       <Card className={st.expenses}>
         <ExpensesFilter expenses={expenses} selectedYear={filteredYear} onFilterExpenses={handleFilteredExpenses}/>
-        {filteredExpenses.length === 0 ? <p className={st.noExpenses}>No expenses found.</p> : filteredExpenses.map((item) => <ExpenseItem title={item.title} amount={item.amount} date={item.date} key={item.id}/>)}
+        {expensesContent}
       </Card>
     </div>
   )
