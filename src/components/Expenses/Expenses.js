@@ -6,16 +6,13 @@ import {useState} from "react";
 
 function Expenses({expenses}) {
 
-  const [filteredYear, setFilteredYear] = useState('2019');
+  const [filterYear, setFilterYear] = useState(2019);
 
   function handleFilteredExpenses(pickedYear) {
-    setFilteredYear(pickedYear);
+    setFilterYear(Number(pickedYear));
   }
 
-  const filteredExpenses = expenses.filter((item) => {
-    const stringItem = item.date.getFullYear().toString()
-    return stringItem === filteredYear;
-  })
+  const filteredExpenses = expenses.filter(item => item.date.getFullYear() === filterYear);
 
   let expensesContent = <p className={st.noExpenses}>No expenses found.</p>
 
@@ -32,7 +29,7 @@ function Expenses({expenses}) {
   return (
     <div>
       <Card className={st.expenses}>
-        <ExpensesFilter expenses={expenses} selectedYear={filteredYear} onFilterExpenses={handleFilteredExpenses}/>
+        <ExpensesFilter expenses={expenses} selectedYear={filterYear} onFilterExpenses={handleFilteredExpenses}/>
         {expensesContent}
       </Card>
     </div>

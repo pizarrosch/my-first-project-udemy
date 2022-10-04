@@ -36,3 +36,17 @@
 .newExpense button.alternative:active {
   background-color: #ddb3f8;
 }
+
+.hiddenShadow {
+  background-color: #a892ee;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

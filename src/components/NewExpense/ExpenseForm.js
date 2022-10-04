@@ -2,7 +2,7 @@ import s from './ExpenseForm.module.css';
 import {useState} from "react";
 import {parseISO} from "date-fns";
 
-function ExpenseForm({onSaveExpenseData}) {
+function ExpenseForm({onSaveExpenseData, buttonClicked}) {
 
   const [inputTitle, setInputTitle] = useState('');
   const [inputAmount, setInputAmount] = useState('');
@@ -15,25 +15,27 @@ function ExpenseForm({onSaveExpenseData}) {
       title: inputTitle,
       amount: inputAmount,
       date: parseISO(inputDate),
-      }
+    }
 
     onSaveExpenseData(expenseData);
     setInputTitle('');
     setInputAmount('');
     setInputDate('');
+    buttonClicked(false);
   }
 
 
   function handleInputTitle(e) {
     setInputTitle(e.target.value);
   }
+
   function handleInputAmount(e) {
     setInputAmount(e.target.value);
   }
+
   function handleInputDate(e) {
     setInputDate(e.target.value);
   }
-
 
   return (
     <form onSubmit={handleAddExpense}>
@@ -52,6 +54,7 @@ function ExpenseForm({onSaveExpenseData}) {
         </div>
       </div>
       <div className={s.newExpense__actions}>
+        <button type='button' onClick={() => buttonClicked(false)}>Cancel</button>
         <button type='submit'>Add expense</button>
       </div>
     </form>
