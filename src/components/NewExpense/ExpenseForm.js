@@ -13,7 +13,7 @@ function ExpenseForm({onSaveExpenseData, buttonClicked}) {
 
     const expenseData = {
       title: inputTitle,
-      amount: inputAmount,
+      amount: +inputAmount,
       date: parseISO(inputDate),
     }
 
@@ -22,6 +22,7 @@ function ExpenseForm({onSaveExpenseData, buttonClicked}) {
     setInputAmount('');
     setInputDate('');
     buttonClicked(false);
+    console.log(expenseData.amount)
   }
 
 

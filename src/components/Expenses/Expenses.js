@@ -3,6 +3,7 @@ import st from './Expenses.module.css';
 import Card from '../UI/Card';
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import {useState} from "react";
+import ExpensesChart from "./ExpensesChart";
 
 function Expenses({expenses}) {
 
@@ -30,6 +31,7 @@ function Expenses({expenses}) {
     <div>
       <Card className={st.expenses}>
         <ExpensesFilter expenses={expenses} selectedYear={filterYear} onFilterExpenses={handleFilteredExpenses}/>
+        <ExpensesChart expenses={filteredExpenses}/>
         {expensesContent}
       </Card>
     </div>
